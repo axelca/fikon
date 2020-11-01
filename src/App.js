@@ -19,7 +19,7 @@ const App = () => {
             'fi' +
             word.slice(firstVow + 1, word.length).join('') +
             ' ' +
-            word.slice(firstVow - 1, firstVow + 1).join('') +
+            word.slice(0, firstVow + 1).join('') +
             'kon'
           );
         } else if (word) {
