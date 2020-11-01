@@ -56,7 +56,7 @@ const App = () => {
       </label>
       {fikon.length > 0 && <h2>Result</h2>}
       <div
-        onClick={copyToClipBoard}
+        onClick={fikon.length > 0 && copyToClipBoard}
         className={copied ? 'fikon active' : 'fikon'}
       >
         {fikon}
