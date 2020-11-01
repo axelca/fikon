@@ -1,38 +1,35 @@
 .App {
-  text-align: center;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App input {
+  width: 400px;
+  max-width: 90%;
+  padding: 1em;
+  margin: 1em 0;
+  border-radius: 8px;
+  border: 1px solid grey;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.App .fikon {
+  width: 400px;
+  max-width: 90%;
+  padding: 1em;
+  transition: 1ms;
+  position: relative;
+  border-radius: 8px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.App .fikon.active {
+  background-color: #ffff005c;
+}
+
+.App .copied {
+  margin: 1em 0;
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background: black;
+  padding: 1em;
+  border-radius: 10px;
+  top: 100%;
 }
