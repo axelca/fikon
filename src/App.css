@@ -10,13 +10,14 @@
   margin: 1em 0;
   border-radius: 8px;
   border: 1px solid grey;
+  font-size: 17px;
 }
 
 .App .fikon {
   width: 400px;
   max-width: 90%;
   padding: 1em;
-  transition: 1ms;
+  transition: 100ms;
   position: relative;
   border-radius: 8px;
 }
@@ -26,10 +27,15 @@
 }
 
 .App .copied {
+  display: none;
+  transition: 100ms;
   margin: 1em 0;
   color: white;
   background: black;
   padding: 1em;
   border-radius: 10px;
-  top: 100%;
+}
+
+.App .copied.active {
+  display: block;
 }

@@ -46,22 +46,24 @@ const App = () => {
     <div className="App">
       <h1>Fikonify</h1>
       <label>
-        <div>Skriv din text:</div>
+        <div>Enter text:</div>
         <input
           autoFocus
-          placeholder="Text att översätta"
+          placeholder="Text to translate"
           type="text"
           onChange={(e) => setFikon(calculateFikon(e.target.value))}
         />
       </label>
-      {fikon.length > 0 && <h2>Resultat</h2>}
+      {fikon.length > 0 && <h2>Result</h2>}
       <div
         onClick={copyToClipBoard}
         className={copied ? 'fikon active' : 'fikon'}
       >
         {fikon}
       </div>
-      {copied && <div className="copied">Fikon copied to clipboard!</div>}
+      <div className={copied ? 'copied active' : 'copied'}>
+        Fikon copied to clipboard!
+      </div>
     </div>
   );
 };
