@@ -3,6 +3,11 @@
   margin: 0 auto;
 }
 
+.App__logo {
+  width: 20px;
+  margin-right: 14px;
+}
+
 .App input {
   width: 400px;
   max-width: 90%;
