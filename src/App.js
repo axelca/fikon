@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import logo from './logo.svg';
 import './App.css';
 
 const App = () => {
@@ -7,27 +8,30 @@ const App = () => {
 
   const firstVowel = (word) => word.search(/[aeiouyåäö]/i);
 
+  const fikonifyWord = (word) => {
+    const firstVow = firstVowel(word);
+    if (firstVow > 0) {
+      word = word.replace(/[^a-öA-Ö ]/gi, '');
+      word = word.split('');
+      return (
+        'fi' +
+        word.slice(firstVow + 1, word.length).join('') +
+        ' ' +
+        word.slice(0, firstVow + 1).join('') +
+        'kon'
+      );
+    } else if (word) {
+      return 'fi ' + word + 'kon';
+    } else {
+      return '';
+    }
+  };
+
   const calculateFikon = (str) =>
     str
       .trim()
       .split(' ')
-      .map((word) => {
-        const firstVow = firstVowel(word);
-        if (firstVow > 0) {
-          word = word.split('');
-          return (
-            'fi' +
-            word.slice(firstVow + 1, word.length).join('') +
-            ' ' +
-            word.slice(0, firstVow + 1).join('') +
-            'kon'
-          );
-        } else if (word) {
-          return 'fi ' + word + 'kon';
-        } else {
-          return '';
-        }
-      })
+      .map((word) => fikonifyWord(word))
       .join(' ')
       .toLowerCase();
 
@@ -44,10 +48,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <h1>Fikonify</h1>
+      <h1>
+        <img src={logo} alt="Fikon logo" className="App__logo" />
+        Fikonify
+      </h1>
       <label>
         <div>Enter text:</div>
         <input
+          pattern="[a-öA-Ö ]+"
           autoFocus
           placeholder="Text to translate"
           type="text"
@@ -56,7 +64,7 @@ const App = () => {
       </label>
       {fikon.length > 0 && <h2>Result</h2>}
       <div
-        onClick={fikon.length > 0 && copyToClipBoard}
+        onClick={fikon.length > 0 ? copyToClipBoard : undefined}
         className={copied ? 'fikon active' : 'fikon'}
       >
         {fikon}
